@@ -8,4 +8,6 @@
 	<include file="schema/Users.xml" />
 	<include file="schema/Theaters.xml" />
 	<include file="schema/Movies.xml"/>
+	<include file="schema/Projections.xml" />
+	<include file="schema/Bookings.xml"/>
 </databaseChangeLog>

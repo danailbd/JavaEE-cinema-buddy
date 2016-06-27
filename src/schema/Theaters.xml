@@ -5,13 +5,13 @@
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
-	<changeSet author="vera" id="THEATER">
+	<changeSet author="vera" id="THEATERS">
 		<preConditions onFail="MARK_RAN">
 			<not>
-				<tableExists tableName="THEATER" />
+				<tableExists tableName="THEATERS" />
 			</not>
 		</preConditions>
-		<createTable tableName="THEATER">
+		<createTable tableName="THEATERS">
 			<column name="NUMBER" type="INTEGER">
 				<constraints nullable="false" primaryKey="true"/>
 			</column>

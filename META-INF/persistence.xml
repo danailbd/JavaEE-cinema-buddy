@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
 
-<persistence-unit name="NewPersistenceUnit">
+<persistence-unit name="CinemaBuddy">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>dao.models.User</class>
-    <class>dao.models.Order</class>
-    <class>dao.models.OrderItem</class>
-    <class>dao.models.Product</class>
-    <class>dao.models.Vendor</class>
+    <class>dao.models.Booking</class>
+    <class>dao.models.Projection</class>
+    <class>dao.models.Movie</class>
+    <class>dao.models.Theater</class>
     <properties>
         <property name="hibernate.connection.url" value="jdbc:mysql://localhost/cinema_buddy"/>
         <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>

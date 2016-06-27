@@ -1,6 +1,6 @@
 package dao;
 
-import dao.impl.JpaMovieDAO;
+import dao.impl.*;
 
 public class JpaBookingDAOFactory {
 
@@ -8,5 +8,19 @@ public class JpaBookingDAOFactory {
         return new JpaMovieDAO();
     }
 
-    // Add other daos
+    JpaBookingDAO getJpaBookingDAO () {
+        return new JpaBookingDAO();
+    }
+
+    JpaUserDAO getJpaUserDAO () {
+        return new JpaUserDAO();
+    }
+
+    JpaTheaterDAO getJpaTheaterDAO () {
+        return new JpaTheaterDAO();
+    }
+
+    JpaProjectionDAO getJpaProjectionDAO () {
+        return new JpaProjectionDAO();
+    }
 }
