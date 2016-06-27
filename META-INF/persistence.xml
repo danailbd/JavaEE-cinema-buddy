@@ -3,11 +3,11 @@
 
 <persistence-unit name="NewPersistenceUnit">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
-    <class>models.Customer</class>
-    <class>models.Order</class>
-    <class>models.OrderItem</class>
-    <class>models.Product</class>
-    <class>models.Vendor</class>
+    <class>dao.models.User</class>
+    <class>dao.models.Order</class>
+    <class>dao.models.OrderItem</class>
+    <class>dao.models.Product</class>
+    <class>dao.models.Vendor</class>
     <properties>
         <property name="hibernate.connection.url" value="jdbc:mysql://localhost/cinema_buddy"/>
         <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>

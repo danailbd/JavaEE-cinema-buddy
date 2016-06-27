@@ -1,4 +1,4 @@
-package models;
+package dao.models;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;

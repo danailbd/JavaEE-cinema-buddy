@@ -1,4 +1,4 @@
-package models;
+package dao.models;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
@@ -7,7 +7,7 @@ import javax.persistence.OneToMany;
 import java.util.Collection;
 
 @Entity
-public class Customer {
+public class User {
     private int id;
 
     @javax.persistence.Column(name = "id")
@@ -30,18 +30,6 @@ public class Customer {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    private String middleName;
-
-    @javax.persistence.Column(name = "middle_name")
-    @Basic
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
     }
 
     private String lastName;
@@ -80,32 +68,20 @@ public class Customer {
         this.email = email;
     }
 
-    private String notes;
-
-    @javax.persistence.Column(name = "notes")
-    @Basic
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Customer customer = (Customer) o;
+        User user = (User) o;
 
-        if (id != customer.id) return false;
-        if (email != null ? !email.equals(customer.email) : customer.email != null) return false;
-        if (firstName != null ? !firstName.equals(customer.firstName) : customer.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(customer.lastName) : customer.lastName != null) return false;
-        if (middleName != null ? !middleName.equals(customer.middleName) : customer.middleName != null) return false;
-        if (notes != null ? !notes.equals(customer.notes) : customer.notes != null) return false;
-        if (phone != null ? !phone.equals(customer.phone) : customer.phone != null) return false;
+        if (id != user.id) return false;
+        if (email != null ? !email.equals(user.email) : user.email != null) return false;
+        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
+        if (middleName != null ? !middleName.equals(user.middleName) : user.middleName != null) return false;
+        if (notes != null ? !notes.equals(user.notes) : user.notes != null) return false;
+        if (phone != null ? !phone.equals(user.phone) : user.phone != null) return false;
 
         return true;
     }

@@ -1,4 +1,4 @@
-package models;
+package dao.models;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -95,17 +95,17 @@ public class Order {
         return result;
     }
 
-    private Customer customerByCustomerId;
+    private User customerByUserId;
 
     @ManyToOne
     public
     @javax.persistence.JoinColumn(name = "customer_id", referencedColumnName = "id", nullable = false)
-    Customer getCustomerByCustomerId() {
-        return customerByCustomerId;
+    User getCustomerByUserId() {
+        return customerByUserId;
     }
 
-    public void setCustomerByCustomerId(Customer customerByCustomerId) {
-        this.customerByCustomerId = customerByCustomerId;
+    public void setCustomerByUserId(User customerByUserId) {
+        this.customerByUserId = customerByUserId;
     }
 
     private Collection<OrderItem> orderItemsById;

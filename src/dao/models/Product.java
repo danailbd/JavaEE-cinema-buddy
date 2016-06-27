@@ -1,4 +1,4 @@
-package models;
+package dao.models;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

@@ -1,11 +1,11 @@
-package models;
+package dao.models;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-@javax.persistence.Table(name = "order_item", schema = "", catalog = "crm")
+@javax.persistence.Table( name = "order_item", schema = "", catalog = "crm")
 @Entity
 public class OrderItem {
     private int quantity;
