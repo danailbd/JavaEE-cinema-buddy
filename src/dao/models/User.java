@@ -1,23 +1,17 @@
 package dao.models;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.Collection;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User {
+    @Id
+    @Column(name = "id")
     private int id;
 
-    @javax.persistence.Column(name = "id")
-    @Id
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     private String firstName;
@@ -79,8 +73,6 @@ public class User {
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
         if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
         if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
-        if (middleName != null ? !middleName.equals(user.middleName) : user.middleName != null) return false;
-        if (notes != null ? !notes.equals(user.notes) : user.notes != null) return false;
         if (phone != null ? !phone.equals(user.phone) : user.phone != null) return false;
 
         return true;
@@ -90,22 +82,17 @@ public class User {
     public int hashCode() {
         int result = id;
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-        result = 31 * result + (middleName != null ? middleName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (notes != null ? notes.hashCode() : 0);
         return result;
     }
 
-    private Collection<Order> ordersById;
+    @OneToMany
+    @JoinColumn(name = "booking_id")
+    private List<Booking> bookings = new ArrayList();
 
-    @OneToMany(mappedBy = "customerByCustomerId")
-    public Collection<Order> getOrdersById() {
-        return ordersById;
-    }
-
-    public void setOrdersById(Collection<Order> ordersById) {
-        this.ordersById = ordersById;
+    public List<Booking> getBookings() {
+        return bookings;
     }
 }
