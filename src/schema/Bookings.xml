@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+	<changeSet author="vera" id="BOOKINGS">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="BOOKINGS" />
+			</not>
+		</preConditions>
+		<createTable tableName="BOOKINGS">
+			<column name="ID" type="INTEGER">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column name="USER_ID" type="INTEGER">
+				<constraints nullable="false"/>
+			</column>
+			<column name="PROJECTION_ID" type="INTEGER">
+				<constraints nullable="false"/>
+			</column>
+			<column name="BOOKING_TIME" type="DATETIME">
+				<constraints nullable="false"/>
+			</column>
+			<column name="SEATS" type="TINYINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		<addForeignKeyConstraint constraintName="FK_PROJ"
+			baseTableName="BOOKINGS" baseColumnNames="PROJECTION_ID"
+			referencedTableName="PROJECTIONS" referencedColumnNames="ID" />
+		<addForeignKeyConstraint constraintName="FK_USER"
+			baseTableName="BOOKINGS" baseColumnNames="USER_ID"
+			referencedTableName="USERS" referencedColumnNames="ID" />
+	</changeSet>
+
+</databaseChangeLog>
