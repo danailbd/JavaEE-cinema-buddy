@@ -10,4 +10,5 @@
 	<include file="schema/Movies.xml"/>
 	<include file="schema/Projections.xml" />
 	<include file="schema/Bookings.xml"/>
+	<include file="schema/UserRoles.xml"/>
 </databaseChangeLog>
