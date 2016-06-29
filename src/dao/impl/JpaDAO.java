@@ -16,8 +16,7 @@ public abstract class JpaDAO {
     protected EntityManager entityManager;
 
     public JpaDAO() {
-        ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
-        this.entityClass = (Class) genericSuperclass.getActualTypeArguments()[1];
+        this.entityClass = getClass();
     }
 
     public <E> void persist(E entity) {
