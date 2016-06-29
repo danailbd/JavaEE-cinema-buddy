@@ -1,4 +1,4 @@
-package tests;
+/*package tests;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -22,3 +22,4 @@ public class TestDataInsert {
 	    }
 	    
 }
+*/

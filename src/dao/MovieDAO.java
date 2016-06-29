@@ -14,8 +14,20 @@ public interface MovieDAO {
     List<Movie> getAllMovies();
 
     List<Movie> getMovieById(int id);
-    /*
-    List<Movie> getMoviesByDirector();
-    List<Movie> getMovieByDirector();
-    */
+    
+    List<Movie> getMoviesByDirector(String director);
+    
+    List<Movie> getMoviesByGenre(String genre);
+    
+    List<Movie> getMovieByTitle(String title);
+    
+    List<Movie> getMovieByRating(int rating);
+  
+    List<Movie> getMoviesByYear(int year);
+    
+    List<Movie> getBy(String attribute);
+    
+    List<Movie> getBy(int attribute);
+    
+    
 }

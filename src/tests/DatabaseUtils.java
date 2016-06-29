@@ -1,18 +1,18 @@
-package tests;
+/*package tests;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import user.User;
+import user.User2;
 import user.UserDAO;
 
 @Stateless
 public class DatabaseUtils {
 	
 	  
-    private static User[] USERS = {};
+    private static User2[] USERS = {};
 	
 	@PersistenceContext
     private EntityManager em;
@@ -30,9 +30,10 @@ public class DatabaseUtils {
 	   }
 
 	    private void addTestUsers() {
-	        for (User user : USERS) {
+	        for (User2 user : USERS) {
 	            userDAO.addUser(user);
 	        }
 	    }
 
 }
+*/
