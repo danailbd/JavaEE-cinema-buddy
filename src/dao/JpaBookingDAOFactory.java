@@ -4,23 +4,31 @@ import dao.impl.*;
 
 public class JpaBookingDAOFactory {
 
-    JpaMovieDAO getJpaMovieDAO () {
-        return new JpaMovieDAO();
+    private final JpaUserDAO jpaUserDAO = new JpaUserDAO();
+    private final JpaTheaterDAO jpaTheaterDAO = new JpaTheaterDAO();
+    private final JpaProjectionDAO jpaProjectionDAO = new JpaProjectionDAO();
+    private JpaMovieDAO jpaMovieDAO = new JpaMovieDAO();
+    private JpaBookingDAO jpaBookingDAO = new JpaBookingDAO();
+
+    public JpaBookingDAOFactory() {}
+
+    public JpaMovieDAO getJpaMovieDAO () {
+        return jpaMovieDAO;
     }
 
-    JpaBookingDAO getJpaBookingDAO () {
-        return new JpaBookingDAO();
+    public JpaBookingDAO getJpaBookingDAO () {
+        return jpaBookingDAO;
     }
 
-    JpaUserDAO getJpaUserDAO () {
-        return new JpaUserDAO();
+    public JpaUserDAO getJpaUserDAO () {
+        return jpaUserDAO;
     }
 
-    JpaTheaterDAO getJpaTheaterDAO () {
-        return new JpaTheaterDAO();
+    public JpaTheaterDAO getJpaTheaterDAO () {
+        return jpaTheaterDAO;
     }
 
-    JpaProjectionDAO getJpaProjectionDAO () {
-        return new JpaProjectionDAO();
+    public JpaProjectionDAO getJpaProjectionDAO () {
+        return jpaProjectionDAO;
     }
 }
