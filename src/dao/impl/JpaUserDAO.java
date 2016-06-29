@@ -1,14 +1,11 @@
 package dao.impl;
 
-import dao.models.User;
-
 import java.security.MessageDigest;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import dao.UserDAO;
+import dao.models.User;
 
 public class JpaUserDAO extends JpaDAO implements UserDAO{
     
@@ -47,6 +44,6 @@ public class JpaUserDAO extends JpaDAO implements UserDAO{
         }
         return password;
     }
-	
+
 	
 }

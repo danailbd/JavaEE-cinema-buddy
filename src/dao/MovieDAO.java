@@ -8,12 +8,13 @@ public interface MovieDAO {
 
     void addMovie(Movie movie);
 
-    void removeMovie(Movie movie);
+    void removeMovie(int id);
 
+    void updateMovie(Movie movie);
 
     List<Movie> getAllMovies();
 
-    List<Movie> getMovieById(int id);
+    Movie getMovieById(int id);
     
     List<Movie> getMoviesByDirector(String director);
     
@@ -21,13 +22,13 @@ public interface MovieDAO {
     
     List<Movie> getMovieByTitle(String title);
     
-    List<Movie> getMovieByRating(int rating);
+    Movie getMovieByRating(int rating);
   
     List<Movie> getMoviesByYear(int year);
+
+	List<Movie> getBy(String attribute);
     
-    List<Movie> getBy(String attribute);
     
-    List<Movie> getBy(int attribute);
-    
+   
     
 }

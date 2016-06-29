@@ -25,7 +25,6 @@ public class Movie {
     @Enumerated(EnumType.STRING)
     private Rating rating;
 
-    // TODO ???
     private double price;
 
     public int getId() {
@@ -159,4 +158,6 @@ public class Movie {
     public void setTrailer(String trailer) {
         this.trailer = trailer;
     }
+
+	
 }

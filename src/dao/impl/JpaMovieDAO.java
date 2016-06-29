@@ -1,25 +1,24 @@
 package dao.impl;
 
-import dao.MovieDAO;
-import dao.models.Movie;
-
 import java.util.List;
 
-import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+
+import dao.MovieDAO;
+import dao.models.Movie;
 
 public class JpaMovieDAO extends JpaDAO implements MovieDAO {
      
 	@Override
     public void addMovie(Movie movie) {
-	
+		
         persist(movie);
     }
 
     @Override
-    public void removeMovie(Movie movie) {
+    public void removeMovie(int id) {
+    	Movie movie = findById(id);
         this.remove(movie);
     }
 
@@ -29,7 +28,7 @@ public class JpaMovieDAO extends JpaDAO implements MovieDAO {
     }
 
     @Override
-    public List<Movie> getMovieById(int id) {
+    public Movie getMovieById(int id) {
         return findById(id);
     }
 
@@ -44,8 +43,15 @@ public class JpaMovieDAO extends JpaDAO implements MovieDAO {
 	    }
 	
 	@Override
-    public List<Movie> getMovieByRating(int rating) {
-		return getBy(rating);
+    public Movie getMovieByRating(int rating) {
+		TypedQuery<Movie> query = entityManager
+                .createNamedQuery("getMoviesByYear", Movie.class)
+                .setParameter("rating", rating);
+        try {
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
 	}
 
 	@Override
@@ -55,7 +61,28 @@ public class JpaMovieDAO extends JpaDAO implements MovieDAO {
 
 	@Override
 	public List<Movie> getMoviesByYear(int year) {
-		return getBy(year);
+		TypedQuery<Movie> query = entityManager
+                .createNamedQuery("getMoviesByYear", Movie.class)
+                .setParameter("year", year);
+        try {
+            return query.getResultList();
+        } catch (NoResultException e) {
+            return null;
+        }
+	}
+	public  void updateMovie(Movie movie) {
+		Movie updatedMovie = getMovieById(movie.getId());
+		updatedMovie.setDescription(movie.getDescription());
+		updatedMovie.setDirector(movie.getDirector());
+		updatedMovie.setGenre(movie.getGenre());
+		updatedMovie.setLength(movie.getLength());
+		updatedMovie.setPrice(movie.getPrice());
+		updatedMovie.setRating(movie.getRating());
+		updatedMovie.setTitle(movie.getTitle());
+		updatedMovie.setTrailer(movie.getTrailer());
+		updatedMovie.setType(movie.getType());
+		updatedMovie.setYear(movie.getYear());
+		
 	}
 	
 	@Override  
@@ -69,20 +96,7 @@ public class JpaMovieDAO extends JpaDAO implements MovieDAO {
             return null;
         }
 	}
-	@Override  
-	public List<Movie> getBy(int attribute) {
-		TypedQuery<Movie> query = entityManager
-                .createNamedQuery("getMoviesBy" + attribute, Movie.class)
-                .setParameter(""+attribute, attribute);
-        try {
-            return query.getResultList();
-        } catch (NoResultException e) {
-            return null;
-        }
-	}
-	
-	
-    
+	   
     
     
 }

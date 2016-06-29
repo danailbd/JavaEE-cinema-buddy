@@ -1,8 +1,12 @@
 package dao.models;
 
-import com.oracle.jrockit.jfr.InvalidValueException;
-
-import javax.persistence.*;
+import javax.management.InvalidAttributeValueException;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Booking {
@@ -18,6 +22,8 @@ public class Booking {
     private User user;
 
     private int seat;
+    
+    private String status;
 
     public int getId() {
         return id;
@@ -60,13 +66,13 @@ public class Booking {
         return taken;
     }
 
-    public void setSeat(int seat) throws InvalidValueException {
-        // TODO business logic here ??
+    public void setSeat(int seat) throws InvalidAttributeValueException {
+ 
         if (seat > 0 && seat < projection.getTheater().getCapacity() &&
                 !isSeatTaken(seat)) {
             this.seat = seat;
         }
-        throw new InvalidValueException();
+        throw new InvalidAttributeValueException();
     }
 
     @Override
@@ -91,4 +97,12 @@ public class Booking {
         result = 31 * result + getSeat();
         return result;
     }
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 }

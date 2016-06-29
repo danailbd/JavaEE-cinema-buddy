@@ -24,8 +24,8 @@ public abstract class JpaDAO {
         entityManager.persist(entity);
     }
 
-    public <E> void remove(E entity) {
-        entityManager.remove(entity);
+    public <E> void remove(E id) {
+        entityManager.remove(id);
     }
 
     public List findSince(Date date) {
