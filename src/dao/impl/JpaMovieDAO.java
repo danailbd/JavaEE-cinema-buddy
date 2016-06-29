@@ -82,6 +82,7 @@ public class JpaMovieDAO extends JpaDAO implements MovieDAO {
 		updatedMovie.setTrailer(movie.getTrailer());
 		updatedMovie.setType(movie.getType());
 		updatedMovie.setYear(movie.getYear());
+		merge(updatedMovie);
 		
 	}
 	

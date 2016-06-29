@@ -12,8 +12,10 @@ public class Projection {
     @GeneratedValue
     private int id;
 
-    private Date date;
+    private Date startTime;
+    private Date endTime;
 
+    
     @ManyToOne
     @JoinColumn(name = "theater_id")
     private Theater theater;
@@ -32,7 +34,8 @@ public class Projection {
     public int getId() {
         return id;
     }
-        public Theater getTheater() {
+    
+    public Theater getTheater() {
         return theater;
     }
 
@@ -48,18 +51,33 @@ public class Projection {
         this.movie = movie;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getStartTime() {
+        return startTime;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setStartDate(Date date) {
+        this.startTime = date;
     }
+    public Date getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
+	}
 
     public List<Booking> getBookings() {
         return bookings;
     }
 
+    @OneToMany
+    @JoinColumn(name = "booking_id")
+    private List<Booking> bookingsList = new ArrayList();
+
+    public List<Booking> getBookingsList() {
+        return bookings;
+    }
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -68,7 +86,8 @@ public class Projection {
         Projection that = (Projection) o;
 
         if (getId() != that.getId()) return false;
-        if (!getDate().equals(that.getDate())) return false;
+        if (!getStartTime().equals(that.getStartTime())) return false;
+        if (!getEndTime().equals(that.getEndTime())) return false;
         if (!getTheater().equals(that.getTheater())) return false;
         if (!getMovie().equals(that.getMovie())) return false;
         return getBookings() != null ? getBookings().equals(that.getBookings()) : that.getBookings() == null;
@@ -78,9 +97,11 @@ public class Projection {
     @Override
     public int hashCode() {
         int result = getId();
-        result = 31 * result + getDate().hashCode();
+        result = 31 * result + getStartTime().hashCode();
+        result = 31 * result + getEndTime().hashCode();
         result = 31 * result + getTheater().hashCode();
         result = 31 * result + getMovie().hashCode();
         return result;
     }
-}
+
+	

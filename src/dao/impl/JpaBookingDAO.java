@@ -24,6 +24,7 @@ public class JpaBookingDAO extends JpaDAO implements BookingDAO{
 				e.printStackTrace();
 		}
 		updatedBooking.setUser(booking.getUser());
+		merge(updatedBooking);
 	}
 	
 	@Override

@@ -24,6 +24,10 @@ public abstract class JpaDAO {
         entityManager.persist(entity);
     }
 
+    public <E> void merge(E entity) {
+        entityManager.merge(entity);
+    }
+    
     public <E> void remove(E id) {
         entityManager.remove(id);
     }
