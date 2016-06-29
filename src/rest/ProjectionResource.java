@@ -16,7 +16,7 @@ import dao.JpaBookingDAOFactory;
 import dao.impl.JpaProjectionDAO;
 import dao.models.Projection;
 
-@Path("projection")
+@Path("/projection")
 public class ProjectionResource {
 	private static final Response RESPONSE_OK = Response.ok().build();
 	private static final Response RESPONSE_FAIL = Response.status(400).build();
@@ -49,9 +49,9 @@ public class ProjectionResource {
 	@GET
 	@Path("/id/{id}")
 	@Produces(MediaType.TEXT_PLAIN)
-	public String getSeatsById(@PathParam("projectionId") Integer projectionId) {
+	public List<Integer> getSeatsById(@PathParam("projectionId") Integer projectionId) {
 		try {
-			String seats= dao.getProjectionSeatsById(projectionId);
+			List<Integer> seats= dao.getProjectionSeatsById(projectionId);
 			return seats;
 		} catch (Exception e) {
 			return null;

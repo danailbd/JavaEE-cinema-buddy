@@ -15,7 +15,7 @@ public interface ProjectionDAO {
 
 	  Projection getProjectionById(int id);
 
-	  int getSeatsByProjection(Projection projection);
+	  List<Integer> getSeatsByProjection(Projection projection);
 	  
 	  void updateProjection(Projection projection);
 	  

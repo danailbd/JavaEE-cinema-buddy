@@ -12,7 +12,7 @@ import dao.JpaBookingDAOFactory;
 import dao.impl.JpaBookingDAO;
 import dao.models.Booking;
 
-@Path("/booking")
+@Path("booking")
 public class BookingsResource {
 	private static final Response RESPONSE_OK = Response.ok().build();
 	private static final Response RESPONSE_FAIL = Response.status(400).build();
