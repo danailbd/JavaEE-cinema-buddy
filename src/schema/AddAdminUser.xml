@@ -6,11 +6,11 @@
 		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
 	<changeSet author="vera" id="ADD_ADMIN">
-		<insert tableName="USERS">
+		<insert tableName="USER_ROLES">
 			<column name="USER_NAME" value="ADMIN" />
 			<column name="USER_ROLE" value="ADMIN" />
 		</insert>
-		<insert tableName="USER_ROLES">
+		<insert tableName="USERS">
 			<column name="ID" value="1" />
 			<column name="USER_NAME" value="ADMIN" />
 			<column name="PASSWORD" value="ADMIN" />
