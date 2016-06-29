@@ -1,11 +1,14 @@
 package rest;
 
+import java.util.List;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.google.gson.Gson;
+
 import dao.impl.JpaBookingDAO;
-import dao.models.Booking;
 import dao.models.Booking;
 
 @Path("/booking")
@@ -14,31 +17,29 @@ public class BookingsResource {
 	private static final Response RESPONSE_FAIL = Response.status(400).build();
 	private static JpaBookingDAO dao = new JpaBookingDAO();
 
-/*	@GET
+	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public void getAllBookings(){
+	public List<Booking> getAllBookings() {
 		try {
-			List<Booking> allBookings = dao.getAllBookings;
-			allBookings.
-			
+			List<Booking> allBookings = dao.getAllBookings();
+			return allBookings;
 		} catch (Exception e) {
-			return RESPONSE_FAIL;
+			return null;
 		}
-	}*/
-/*	
+	}
+
 	@GET
 	@Path("/id/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public void getById(@PathParam("bookingId") Integer bookingId){
+	public Booking getById(@PathParam("bookingId") Integer bookingId) {
 		try {
-			Booking booking = dao.findById(bookingId);
-			Booking booking =re
-			
+			Booking booking = dao.getBookingById(bookingId);
+			return booking;
 		} catch (Exception e) {
-			return "";
+			return null;
 		}
-	}*/
-	
+	}
+
 	@PUT
 	@Path("/add")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -55,8 +56,7 @@ public class BookingsResource {
 	@POST
 	@Path("/update")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void updateBooking(Booking booking) {
-		Integer bookingId = booking.getId();
+	public Response updateBooking(Booking booking) {
 		try {
 			dao.updateBooking(booking);
 			return RESPONSE_OK;
@@ -68,7 +68,7 @@ public class BookingsResource {
 
 	@POST
 	@Path("/updateStatus/{bookingId}/{status}")
-	public void updateBooking(@PathParam("bookingId") Integer bookingId, @PathParam("status") Integer status) {
+	public Response updateBooking(@PathParam("bookingId") Integer bookingId, @PathParam("status") String status) {
 		try {
 			dao.updateBookingStatus(bookingId, status);
 			return RESPONSE_OK;
