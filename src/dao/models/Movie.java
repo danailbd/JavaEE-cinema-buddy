@@ -20,9 +20,11 @@ public class Movie {
     private String trailer;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Type type;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Rating rating;
 
     private double price;

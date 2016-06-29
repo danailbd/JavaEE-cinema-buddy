@@ -12,10 +12,12 @@ public class Projection {
     @GeneratedValue
     private int id;
 
+    @Column(nullable = false)
     private Date startTime;
+    @Column(nullable = false)
     private Date endTime;
 
-    
+
     @ManyToOne
     @JoinColumn(name = "theater_id")
     private Theater theater;
@@ -29,12 +31,13 @@ public class Projection {
     private List<Booking> bookings = new ArrayList();
 
 
-    public Projection () {}
+    public Projection() {
+    }
 
     public int getId() {
         return id;
     }
-    
+
     public Theater getTheater() {
         return theater;
     }
@@ -58,13 +61,14 @@ public class Projection {
     public void setStartDate(Date date) {
         this.startTime = date;
     }
-    public Date getEndTime() {
-		return endTime;
-	}
 
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
-	}
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
 
     public List<Booking> getBookings() {
         return bookings;
@@ -77,7 +81,7 @@ public class Projection {
     public List<Booking> getBookingsList() {
         return bookings;
     }
-    
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -103,5 +107,4 @@ public class Projection {
         result = 31 * result + getMovie().hashCode();
         return result;
     }
-
-	
+}
