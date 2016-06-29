@@ -5,6 +5,8 @@ import java.util.List;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import dao.JpaBookingDAOFactory;
 import dao.impl.JpaMovieDAO;
 import dao.models.Movie;
 
@@ -12,7 +14,8 @@ import dao.models.Movie;
 public class MovieResource {
 	private static final Response RESPONSE_OK = Response.ok().build();
 	private static final Response RESPONSE_FAIL = Response.status(400).build();
-	private static JpaMovieDAO dao = new JpaMovieDAO();
+	private static final JpaBookingDAOFactory jpaBookingDAOFactory = new JpaBookingDAOFactory();
+	private static JpaMovieDAO dao = jpaBookingDAOFactory.getJpaMovieDAO();
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -36,7 +39,7 @@ public class MovieResource {
 			return null;
 		}
 	}
-	
+
 	@PUT
 	@Path("/add")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -60,8 +63,7 @@ public class MovieResource {
 		}catch(Exception e){
 			return RESPONSE_FAIL;
 		}
-		
-	};
+	}
 
 	@POST
 	@Path("/delete/{movieId}")
@@ -72,6 +74,6 @@ public class MovieResource {
 		} catch (Exception e) {
 			return RESPONSE_FAIL;
 		}
-	};
+	}
 
 }

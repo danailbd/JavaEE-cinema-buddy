@@ -8,6 +8,7 @@ import javax.ws.rs.core.Response;
 
 import com.google.gson.Gson;
 
+import dao.JpaBookingDAOFactory;
 import dao.impl.JpaBookingDAO;
 import dao.models.Booking;
 
@@ -15,7 +16,8 @@ import dao.models.Booking;
 public class BookingsResource {
 	private static final Response RESPONSE_OK = Response.ok().build();
 	private static final Response RESPONSE_FAIL = Response.status(400).build();
-	private static JpaBookingDAO dao = new JpaBookingDAO();
+	private static final JpaBookingDAOFactory jpaBookingDAOFactory = new JpaBookingDAOFactory();
+	private static JpaBookingDAO dao = jpaBookingDAOFactory.getJpaBookingDAO();
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
