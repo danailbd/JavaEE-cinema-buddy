@@ -43,6 +43,11 @@ public class JpaBookingDAO extends JpaDAO implements BookingDAO{
 		return findAll();
 	}
 	
+	@Override
+	public void removeBooking(int id) {
+	    	Booking booking = findById(id);
+	        this.remove(booking);
+	    }
 
 }
 
