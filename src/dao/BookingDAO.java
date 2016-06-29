@@ -15,4 +15,6 @@ public interface BookingDAO {
 	List<Booking> getAllBookings();
 
 	void removeBooking(int id);
+
+	List<Booking> getBookingsPerUser(Integer userId);
 }

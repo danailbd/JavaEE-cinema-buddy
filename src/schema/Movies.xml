@@ -41,8 +41,11 @@
 			<column name="PRICE" type="DOUBLE">
 				<constraints nullable="false"/>
 			</column>
-			<column name="Trailer" type="VARCHAR(60))">
+			<column name="TRAILER" type="VARCHAR(60))">
 				<constraints nullable="true"/>
+			</column>
+			<column name="DATE" type="DATE">
+				<constraints nullable="false"/>
 			</column>
 			
 		</createTable>

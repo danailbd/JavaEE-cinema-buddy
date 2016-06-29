@@ -2,6 +2,7 @@ package dao.models;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -16,6 +17,7 @@ public class Movie {
     private String title;
     private String genre;
     private String description;
+    private Date date;
 
     private String trailer;
 
@@ -158,6 +160,14 @@ public class Movie {
     public void setTrailer(String trailer) {
         this.trailer = trailer;
     }
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
 
 	
 }

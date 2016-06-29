@@ -1,5 +1,6 @@
 package rest;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -33,6 +34,18 @@ public class ProjectionResource {
 			return null;
 		}
 	}
+	
+	@GET
+	@Path("date/{date}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Projection> getProjectionsByDate(@PathParam("date") Date date) {
+		try {
+			List<Projection> allProjections = dao.getProjectionsByDate(date);
+			return allProjections;
+		} catch (Exception e) {
+			return null;
+		}
+	}
 
 	@GET
 	@Path("/id/{id}")
@@ -45,14 +58,14 @@ public class ProjectionResource {
 			return null;
 		}
 	}
-	
+	//TODO: 
 	@GET
-	@Path("/id/{id}")
+	@Path("/freeSeats/{projectionId}")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String getSeatsById(@PathParam("projectionId") Integer projectionId) {
 		try {
-			String seats= dao.getProjectionSeatsById(projectionId);
-			return seats;
+			//String seats= dao.getProjectionSeats(projectionId);
+			return null;//seats;
 		} catch (Exception e) {
 			return null;
 		}

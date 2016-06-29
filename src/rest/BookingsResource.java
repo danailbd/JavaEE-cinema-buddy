@@ -2,7 +2,9 @@ package rest;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -14,16 +16,31 @@ import dao.models.Booking;
 
 @Path("/booking")
 public class BookingsResource {
+	@Context	 
+	private static ServletContext context; 
 	private static final Response RESPONSE_OK = Response.ok().build();
 	private static final Response RESPONSE_FAIL = Response.status(400).build();
-	private static final JpaBookingDAOFactory jpaBookingDAOFactory = new JpaBookingDAOFactory();
-	private static JpaBookingDAO dao = jpaBookingDAOFactory.getJpaBookingDAO();
+	//private static final JpaBookingDAOFactory jpaBookingDAOFactory = new JpaBookingDAOFactory();
+	private static JpaBookingDAO dao = new JpaBookingDAO();//jpaBookingDAOFactory.getJpaBookingDAO();
 
+	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Booking> getAllBookings() {
 		try {
 			List<Booking> allBookings = dao.getAllBookings();
+			return allBookings;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	@GET
+	@Path("/userId/{userId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Booking> getBookingsPerUser(@PathParam("userId") Integer userId) {
+		try {
+			List<Booking> allBookings = dao.getBookingsPerUser(userId);
 			return allBookings;
 		} catch (Exception e) {
 			return null;

@@ -1,22 +1,24 @@
 package dao;
 
+import java.util.Date;
 import java.util.List;
 
 import dao.models.Projection;
 
-
 public interface ProjectionDAO {
-	
-	  void addProjection(Projection projection);
 
-	  void removeProjection(int id);
+	void addProjection(Projection projection);
 
-	  List<Projection> getAllProjection();
+	void removeProjection(int id);
 
-	  Projection getProjectionById(int id);
+	List<Projection> getAllProjections();
 
-	  int getSeatsByProjection(Projection projection);
-	  
-	  void updateProjection(Projection projection);
-	  
+	Projection getProjectionById(int id);
+
+	//int getSeatsByProjection(Projection projection);
+
+	void updateProjection(Projection projection);
+
+	List<Projection> getProjectionsByDate(Date date);
+
 }

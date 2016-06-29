@@ -7,6 +7,7 @@ import javax.persistence.TypedQuery;
 
 import dao.MovieDAO;
 import dao.models.Movie;
+import dao.models.User;
 
 public class JpaMovieDAO extends JpaDAO implements MovieDAO {
      
@@ -27,6 +28,13 @@ public class JpaMovieDAO extends JpaDAO implements MovieDAO {
         return findAll();
     }
 
+    @Override 
+    public List<Movie> getLast3Movies(){
+    	String txtQuery = "SELECT TOP 3 * FROM MOVIES ORDER BY Date desc  ";
+        TypedQuery<Movie> query = entityManager.createQuery(txtQuery, Movie.class);
+        return query.getResultList();
+    }
+    
     @Override
     public Movie getMovieById(int id) {
         return findById(id);

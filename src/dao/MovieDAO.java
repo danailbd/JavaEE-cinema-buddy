@@ -27,6 +27,8 @@ public interface MovieDAO {
     List<Movie> getMoviesByYear(int year);
 
 	List<Movie> getBy(String attribute);
+
+	List<Movie> getLast3Movies();
     
     
    

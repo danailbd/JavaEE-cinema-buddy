@@ -57,13 +57,13 @@ public class TheaterResource {
 			return RESPONSE_FAIL;
 		}
 	};
-
+	//TODO:
 	@POST
 	@Path("/update")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateTheater(Theater theater) {
 		try {
-			dao.updateTheater(theater);
+			//dao.updateTheater(theater);
 			return RESPONSE_OK;
 		}catch(Exception e){
 			return RESPONSE_FAIL;

@@ -29,6 +29,18 @@ public class MovieResource {
 	}
 
 	@GET
+	@Path("/latest")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Movie> getLatestMovies() {
+		try {
+			List<Movie> latestMovies = dao.getLast3Movies();
+			return latestMovies;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@GET
 	@Path("/id/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Movie getById(@PathParam("movieId") Integer movieId) {
@@ -47,7 +59,7 @@ public class MovieResource {
 		try {
 			dao.addMovie(movie);
 			return RESPONSE_OK;
-		}catch(Exception e){
+		} catch (Exception e) {
 			return RESPONSE_FAIL;
 		}
 
@@ -60,7 +72,7 @@ public class MovieResource {
 		try {
 			dao.updateMovie(movie);
 			return RESPONSE_OK;
-		}catch(Exception e){
+		} catch (Exception e) {
 			return RESPONSE_FAIL;
 		}
 	}

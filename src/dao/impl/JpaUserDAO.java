@@ -22,7 +22,7 @@ public class JpaUserDAO extends JpaDAO implements UserDAO{
 	
    @Override
 	public boolean validateUserCredentials(String email, String password) {
-        String txtQuery = "SELECT u FROM User u WHERE u.email=:email AND u.password=:password";
+        String txtQuery = "SELECT * FROM Users u WHERE u.email=:email AND u.password=:password";
         TypedQuery<User> query = entityManager.createQuery(txtQuery, User.class);
         query.setParameter("email", email);
         query.setParameter("password", getHashedPassword(password));
