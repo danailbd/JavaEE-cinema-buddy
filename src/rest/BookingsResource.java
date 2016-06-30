@@ -14,7 +14,7 @@ import dao.JpaBookingDAOFactory;
 import dao.impl.JpaBookingDAO;
 import dao.models.Booking;
 
-@Path("/booking")
+@Path("booking")
 public class BookingsResource {
 	@Context	 
 	private static ServletContext context; 

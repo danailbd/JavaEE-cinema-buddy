@@ -1,12 +1,7 @@
 package dao.models;
 
 import javax.management.InvalidAttributeValueException;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Booking {
@@ -21,8 +16,10 @@ public class Booking {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @Column(nullable = false)
     private int seat;
-    
+
+    @Column(nullable = false)
     private String status;
 
     public int getId() {

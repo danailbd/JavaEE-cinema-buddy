@@ -33,5 +33,7 @@ public class JpaTheaterDAO extends JpaDAO implements TheaterDAO {
 	}
 
 
+	public void updateTheater(Theater theater) {
 
+	}
 }

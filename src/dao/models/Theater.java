@@ -1,23 +1,33 @@
 package dao.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Theater {
+public class Theater implements Serializable {
 
-    @Id
-    @GeneratedValue
     private int id;
 
+    @Column(nullable = false)
     private int capacity;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Type type;
 
+    public Theater() {
+    }
+
+    @Id
+    @Column(nullable = false)
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getCapacity() {

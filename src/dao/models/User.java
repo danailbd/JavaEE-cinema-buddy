@@ -8,6 +8,7 @@ import java.util.List;
 public class User {
     @Id
     @Column(name = "id")
+    @GeneratedValue
     private int id;
 
     public int getId() {
@@ -61,7 +62,7 @@ public class User {
 
     private String email;
 
-    @javax.persistence.Column(name = "email")
+    @javax.persistence.Column(name = "email", unique=true)
     @Basic
     public String getEmail() {
         return email;
