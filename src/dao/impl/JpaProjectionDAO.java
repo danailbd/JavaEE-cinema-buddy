@@ -43,6 +43,11 @@ public class JpaProjectionDAO extends JpaDAO implements ProjectionDAO {
 		return findById(id);
 	}
 
+	@Override
+	public List<Integer> getSeatsByProjection(Projection projection) {
+		return null;
+	}
+
 	/*
 	 * @Override public int getSeatsByProjection(int id) { Projection projection
 	 * = getProjectionById(id); return projection.getBooking().getSeats(); }

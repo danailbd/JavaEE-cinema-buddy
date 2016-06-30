@@ -64,13 +64,8 @@ public class ProjectionResource {
 	@Produces(MediaType.TEXT_PLAIN)
 	public List<Integer> getSeatsById(@PathParam("projectionId") Integer projectionId) {
 		try {
-<<<<<<< HEAD
-			//String seats= dao.getProjectionSeats(projectionId);
+//			String seats= dao.getProjectionSeats(projectionId);
 			return null;//seats;
-=======
-			List<Integer> seats= dao.getProjectionSeatsById(projectionId);
-			return seats;
->>>>>>> refs/remotes/origin/master
 		} catch (Exception e) {
 			return null;
 		}

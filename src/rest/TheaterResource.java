@@ -34,7 +34,6 @@ public class TheaterResource {
         }
     }
 
-<<<<<<< HEAD
 	@GET
 	@Path("/id/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -58,43 +57,6 @@ public class TheaterResource {
 			return RESPONSE_FAIL;
 		}
 	};
-	//TODO:
-	@POST
-	@Path("/update")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response updateTheater(Theater theater) {
-		try {
-			//dao.updateTheater(theater);
-			return RESPONSE_OK;
-		}catch(Exception e){
-			return RESPONSE_FAIL;
-		}
-	}
-=======
-    @GET
-    @Path("/id/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Theater getById(@PathParam("theaterId") Integer theaterId) {
-        try {
-            Theater theater = dao.getTheaterById(theaterId);
-            return theater;
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    @POST
-    @Path("/add")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response addNewTheater(Theater theater) {
-        try {
-            dao.addTheater(theater);
-            return RESPONSE_OK;
-        } catch (Exception e) {
-            return RESPONSE_FAIL;
-        }
-    }
->>>>>>> refs/remotes/origin/master
 
     @POST
     @Path("/update")

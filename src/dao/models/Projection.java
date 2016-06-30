@@ -107,10 +107,4 @@ public class Projection {
         result = 31 * result + getMovie().hashCode();
         return result;
     }
-<<<<<<< HEAD
-
-	
 }
-=======
-}
->>>>>>> refs/remotes/origin/master
