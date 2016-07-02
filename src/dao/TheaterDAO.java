@@ -4,6 +4,9 @@ import java.util.List;
 
 import dao.models.Theater;
 
+import javax.enterprise.context.ApplicationScoped;
+
+
 public interface TheaterDAO {
 
     void addTheater(Theater theater);
@@ -13,6 +16,6 @@ public interface TheaterDAO {
     List<Theater> getAllTheaters();
 
     Theater getTheaterById(int id);
-   
-    
+
+    void updateTheater(Theater theater);
 }

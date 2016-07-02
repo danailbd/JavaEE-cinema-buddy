@@ -8,20 +8,18 @@ import java.util.List;
 @Entity
 public class Theater implements Serializable {
 
+    @Id
+    @Column(nullable = false)
     private int id;
 
     @Column(nullable = false)
     private int capacity;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private Type type;
 
-    public Theater() {
-    }
+    public Theater() {}
 
-    @Id
-    @Column(nullable = false)
     public int getId() {
         return id;
     }
@@ -46,9 +44,10 @@ public class Theater implements Serializable {
         this.type = type;
     }
 
-    // We want to access all projections for theater
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Projection> projections = new ArrayList();
+    // We want
+    @OneToMany(targetEntity=Projection.class, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "projection_id")
+    private List<Projection> projections;
 
     public List<Projection> getProjections () {
         return projections;

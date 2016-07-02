@@ -1,5 +1,6 @@
 package dao.impl;
 
+import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.Date;
 import java.util.List;
@@ -9,10 +10,10 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 
-public abstract class JpaDAO {
+public abstract class JpaDAO implements Serializable {
     protected Class entityClass;
 
-    @PersistenceContext
+    @PersistenceContext(name = "CinemaBuddy")
     protected EntityManager entityManager;
 
     public JpaDAO() {

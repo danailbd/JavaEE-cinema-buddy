@@ -3,21 +3,17 @@
 
 <persistence-unit name="CinemaBuddy">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
-    <class>dao.models.User</class>
-    <class>dao.models.Booking</class>
-    <class>dao.models.Projection</class>
-    <class>dao.models.Movie</class>
-    <class>dao.models.Theater</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
         <property name="hibernate.connection.url" value="jdbc:mysql://localhost/CinemaBuddyDB"/>
         <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
         <property name="hibernate.connection.username" value="root"/>
-        <property name="hibernate.connection.password" value=""/>
-        <property name="hibernate.archive.autodetection" value="class"/>
+        <property name="hibernate.connection.password" value="1"/>
+        <!--<property name="hibernate.archive.autodetection" value="class"/>-->
         <property name="hibernate.show_sql" value="true"/>
         <property name="hibernate.format_sql" value="true"/>
         <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
-        <property name="hbm2ddl.auto" value="update"/>
+        <property name="hibernate.hbm2ddl.auto" value="update"/>
     </properties>
 </persistence-unit>
 </persistence>
