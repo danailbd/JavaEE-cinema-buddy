@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+	<changeSet author="vera" id="USER_ROLES">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="USER_ROLES" />
+			</not>
+		</preConditions>
+		<createTable tableName="USER_ROLES">
+			<column name="USER_NAME" type="VARCHAR(20)">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column name="USER_ROLE" type="VARCHAR(20)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+</databaseChangeLog>
