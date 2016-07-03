@@ -2,8 +2,6 @@ package rest;
 
 import java.util.List;
 
-import javax.annotation.ManagedBean;
-import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -16,7 +14,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import dao.TheaterDAO;
-import dao.impl.JpaTheaterDAO;
 import dao.models.Theater;
 
 @Path("/theater")
