@@ -1,7 +1,10 @@
 package dao.models;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,6 +15,8 @@ import java.util.List;
 public class Movie implements Serializable {
     @Id
     @GeneratedValue
+    @XmlID
+//    @XmlJavaTypeAdapter(type=long.class, value=WSLongAdapter.class)
     private int id;
 
     private int year;
@@ -121,7 +126,8 @@ public class Movie implements Serializable {
     }
 
     // We want to access all projections for movie
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
+    @XmlTransient
     private List<Projection> projections = new ArrayList();
 
     public List<Projection> getProjections () {

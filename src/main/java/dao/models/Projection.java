@@ -1,7 +1,10 @@
 package dao.models;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -14,6 +17,7 @@ public class Projection implements Serializable {
 
     @Id
     @GeneratedValue
+    @XmlID
     private int id;
 
     @Column(nullable = false)
@@ -24,14 +28,17 @@ public class Projection implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "theater_id")
+    @XmlIDREF
     private Theater theater;
 
     @ManyToOne
     @JoinColumn(name = "movie_id")
+    @XmlIDREF
     private Movie movie;
 
 
     @OneToMany(cascade = CascadeType.ALL)
+    @XmlTransient
     private List<Booking> bookings = new ArrayList();
 
 

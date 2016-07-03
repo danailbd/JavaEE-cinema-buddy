@@ -1,8 +1,11 @@
 package dao.models;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @XmlRootElement(name = "theater")
@@ -10,6 +13,7 @@ public class Theater implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @XmlID
     private int id;
 
     @Column(nullable = false)
@@ -54,13 +58,14 @@ public class Theater implements Serializable {
     }
 
     // We want
-//    @OneToMany(targetEntity=Projection.class, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "projection_id")
-//    private List<Projection> projections;
-//
-//    public List<Projection> getProjections () {
-//        return projections;
-//    }
+    @OneToMany(targetEntity=Projection.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "projection_id")
+    @XmlTransient
+    private List<Projection> projections;
+
+    public List<Projection> getProjections () {
+        return projections;
+    }
 
     @Override
     public boolean equals(Object o) {

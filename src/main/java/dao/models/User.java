@@ -1,7 +1,11 @@
 package dao.models;
 
+import org.hibernate.validator.constraints.Email;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,16 +15,33 @@ import java.util.List;
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @XmlID
     private int id;
+
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
+
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name = "email", unique = true)
+    @Email // Not that good to a custom pattern
+    private String email;
+
+    @XmlTransient
+    // TODO some restrictions ?
+    private String password;
+
 
     public int getId() {
         return id;
     }
-
-    private String firstName;
-
-    @Enumerated(EnumType.STRING)
-    private UserRole role;
 
     public UserRole getRole() {
         return role;
@@ -30,7 +51,6 @@ public class User implements Serializable {
         this.role = role;
     }
 
-    @Column(name = "first_name")
     public String getFirstName() {
         return firstName;
     }
@@ -39,9 +59,7 @@ public class User implements Serializable {
         this.firstName = firstName;
     }
 
-    private String lastName;
 
-    @Column(name = "last_name")
     public String getLastName() {
         return lastName;
     }
@@ -50,7 +68,6 @@ public class User implements Serializable {
         this.lastName = lastName;
     }
     
-    private String password;
     public String getPassword() {
 		return password;
 	}
@@ -59,9 +76,6 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-    private String phone;
-
-    @Column(name = "phone")
     public String getPhone() {
         return phone;
     }
@@ -70,9 +84,7 @@ public class User implements Serializable {
         this.phone = phone;
     }
 
-    private String email;
 
-    @Column(name = "email", unique=true)
     public String getEmail() {
         return email;
     }
@@ -130,8 +142,9 @@ public class User implements Serializable {
                 '}';
     }
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "booking_id")
+    @XmlTransient //Do not include
     private List<Booking> bookings = new ArrayList();
 
     public List<Booking> getBookings() {

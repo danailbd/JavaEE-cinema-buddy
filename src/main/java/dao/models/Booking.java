@@ -2,6 +2,8 @@ package dao.models;
 
 import javax.management.InvalidAttributeValueException;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -9,13 +11,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Booking {
     @Id
     @GeneratedValue
+    @XmlID
     private int id;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "projection_id")
+    @XmlIDREF
     private Projection projection;
-    @ManyToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "user_id")
+    @XmlIDREF
     private User user;
 
     @Column(nullable = false)

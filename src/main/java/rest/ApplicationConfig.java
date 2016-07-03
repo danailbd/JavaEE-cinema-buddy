@@ -15,8 +15,11 @@ public class ApplicationConfig extends Application {
         return new HashSet<Class<?>>(Arrays.asList(
                 TheaterResource.class,
                 MovieResource.class,
-                BookingsResource.class,
+                BookingResource.class,
                 ProjectionResource.class,
+                UserResource.class,
+
+                // Helping endpoint
                 LoadTestResource.class));
     }
 }

@@ -13,7 +13,8 @@ import dao.BookingDAO;
 import dao.models.Booking;
 
 @Path("booking")
-public class BookingsResource {
+@Produces(MediaType.APPLICATION_JSON)
+public class BookingResource {
 	@Context	 
 	private static ServletContext context; 
 	private static final Response RESPONSE_OK = Response.ok().build();
@@ -23,7 +24,6 @@ public class BookingsResource {
 	private BookingDAO dao;
 
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
 	public List<Booking> getAllBookings() {
 		try {
 			List<Booking> allBookings = dao.getAllBookings();
@@ -35,7 +35,6 @@ public class BookingsResource {
 	
 	@GET
 	@Path("/userId/{userId}")
-	@Produces(MediaType.APPLICATION_JSON)
 	public List<Booking> getBookingsPerUser(@PathParam("userId") Integer userId) {
 		try {
 			List<Booking> allBookings = dao.getBookingsPerUser(userId);
@@ -47,7 +46,6 @@ public class BookingsResource {
 
 	@GET
 	@Path("/id/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
 	public Booking getById(@PathParam("bookingId") Integer bookingId) {
 		try {
 			Booking booking = dao.getBookingById(bookingId);
