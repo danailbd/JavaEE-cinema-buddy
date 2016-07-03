@@ -66,7 +66,7 @@ public class LoadTestResource {
         res.add(tmp);
         uDao.addUser(tmp);
 
-        tmp = new User("ga@mail.bg", "124", UserRole.admin);
+        tmp = new User("ga@mail.bg", "124", UserRole.simple);
         res.add(tmp);
         uDao.addUser(tmp);
     }

@@ -47,7 +47,7 @@ public class JpaUserDAO extends JpaDAO implements UserDAO {
     @Override
     public List<User> getAllUsersByRole(UserRole role) {
         Query q = entityManager.createQuery(
-                "SELECT e FROM " + entityClass.getName() + " e WHERE role=:role");
+                "SELECT e FROM " + entityClass.getName() + " e WHERE e.role=:role");
         q.setParameter("role", role);
         return q.getResultList();
     }

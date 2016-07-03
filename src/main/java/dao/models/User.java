@@ -19,6 +19,7 @@ public class User implements Serializable {
 
     private String firstName;
 
+    @Enumerated(EnumType.STRING)
     private UserRole role;
 
     public UserRole getRole() {

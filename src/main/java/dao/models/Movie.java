@@ -25,11 +25,11 @@ public class Movie implements Serializable {
     private String trailer;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private Type type;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private Rating rating;
 
     private double price;

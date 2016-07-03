@@ -20,7 +20,6 @@ public class JpaMovieDAO extends JpaDAO implements MovieDAO {
 
     @Override
     public void addMovie(Movie movie) {
-		
         persist(movie);
     }
 

@@ -34,7 +34,7 @@ public abstract class JpaDAO implements Serializable {
 
     public List findSince(Date date) {
         Query q = entityManager.createQuery(
-                "SELECT e FROM " + entityClass.getName() + " e WHERE  date >= :date_since");
+                "SELECT e FROM " + entityClass.getName() + " e WHERE  e.date >= :date_since");
         q.setParameter("date_since", date);
         return q.getResultList();
     }
