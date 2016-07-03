@@ -13,8 +13,12 @@ import dao.models.User;
 
 @Stateless
 public class JpaMovieDAO extends JpaDAO implements MovieDAO {
-     
-	@Override
+
+    public JpaMovieDAO() {
+        super(Movie.class);
+    }
+
+    @Override
     public void addMovie(Movie movie) {
 		
         persist(movie);

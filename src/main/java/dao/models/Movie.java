@@ -34,6 +34,15 @@ public class Movie implements Serializable {
 
     private double price;
 
+
+    public Movie() {
+    }
+
+    public Movie(String title, double price) {
+        this.title = title;
+        this.price = price;
+    }
+
     public int getId() {
         return id;
     }
@@ -174,5 +183,22 @@ public class Movie implements Serializable {
 		this.date = date;
 	}
 
-	
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", year=" + year +
+                ", length=" + length +
+                ", director='" + director + '\'' +
+                ", title='" + title + '\'' +
+                ", genre='" + genre + '\'' +
+                ", description='" + description + '\'' +
+                ", date=" + date +
+                ", trailer='" + trailer + '\'' +
+                ", type=" + type +
+                ", rating=" + rating +
+                ", price=" + price +
+                ", projections=" + projections +
+                '}';
+    }
 }

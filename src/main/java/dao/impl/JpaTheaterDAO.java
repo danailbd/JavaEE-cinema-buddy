@@ -10,6 +10,10 @@ import javax.ejb.Stateless;
 @Stateless
 public class JpaTheaterDAO extends JpaDAO implements TheaterDAO {
 
+	public JpaTheaterDAO() {
+		super(Theater.class);
+	}
+
 	@Override
 	public void addTheater(Theater theater) {
 		persist(theater);

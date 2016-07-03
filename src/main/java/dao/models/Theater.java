@@ -24,6 +24,11 @@ public class Theater implements Serializable {
         this.capacity = capacity;
     }
 
+    public Theater(int capacity, Type type) {
+        this.capacity = capacity;
+        this.type = type;
+    }
+
     public int getId() {
         return id;
     }
@@ -76,5 +81,14 @@ public class Theater implements Serializable {
         result = 31 * result + getCapacity();
         result = 31 * result + (getType() != null ? getType().hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Theater{" +
+                "id=" + id +
+                ", capacity=" + capacity +
+                ", type=" + type +
+                '}';
     }
 }

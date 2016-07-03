@@ -12,6 +12,11 @@ public class ApplicationConfig extends Application {
     @Override
     @SuppressWarnings("unchecked")
     public Set<Class<?>> getClasses() {
-        return new HashSet<Class<?>>(Arrays.asList(TheaterResource.class));
+        return new HashSet<Class<?>>(Arrays.asList(
+                TheaterResource.class,
+                MovieResource.class,
+                BookingsResource.class,
+                ProjectionResource.class,
+                LoadTestResource.class));
     }
 }

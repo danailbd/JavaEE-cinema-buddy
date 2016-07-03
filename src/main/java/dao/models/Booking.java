@@ -21,11 +21,16 @@ public class Booking {
     @Column(nullable = false)
     private int seat;
 
-    @Column(nullable = false)
-    private String status;
-
     public int getId() {
         return id;
+    }
+
+    public Booking() { }
+
+    public Booking(Projection projection, int seat, User user) {
+        this.projection = projection;
+        this.seat = seat;
+        this.user = user;
     }
 
     public Projection getProjection() {
@@ -97,11 +102,13 @@ public class Booking {
         return result;
     }
 
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "id=" + id +
+                ", projection=" + projection +
+                ", user=" + user +
+                ", seat=" + seat +
+                '}';
+    }
 }

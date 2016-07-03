@@ -13,6 +13,10 @@ import dao.models.User;
 @Stateless
 public class JpaBookingDAO extends JpaDAO implements BookingDAO {
 
+	public JpaBookingDAO() {
+		super(Booking.class);
+	}
+
 	@Override
 	public void addBooking(Booking booking) {
 		persist(booking);
@@ -39,8 +43,8 @@ public class JpaBookingDAO extends JpaDAO implements BookingDAO {
 
 	@Override
 	public void updateBookingStatus(int bookingId, String status) {
-		Booking bookingUpdatedStatus = getBookingById(bookingId);
-		bookingUpdatedStatus.setStatus(status);
+//		Booking bookingUpdatedStatus = getBookingById(bookingId);
+//		bookingUpdatedStatus.setStatus(status);
 	}
 
 	@Override

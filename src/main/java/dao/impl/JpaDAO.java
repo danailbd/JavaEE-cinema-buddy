@@ -16,8 +16,8 @@ public abstract class JpaDAO implements Serializable {
     @PersistenceContext(name = "cinema-buddy-unit")
     protected EntityManager entityManager;
 
-    public JpaDAO() {
-        this.entityClass = getClass();
+    public JpaDAO(Class entitityClass) {
+        this.entityClass = entitityClass;
     }
 
     public <E> void persist(E entity) {

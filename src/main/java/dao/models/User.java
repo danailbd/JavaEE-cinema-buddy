@@ -19,6 +19,16 @@ public class User implements Serializable {
 
     private String firstName;
 
+    private UserRole role;
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
+    }
+
     @Column(name = "first_name")
     public String getFirstName() {
         return firstName;
@@ -70,6 +80,15 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    public User() {
+    }
+
+    public User(String email, String password, UserRole role) {
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -94,6 +113,20 @@ public class User implements Serializable {
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", role=" + role +
+                ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", bookings=" + bookings +
+                '}';
     }
 
     @OneToMany

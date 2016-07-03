@@ -16,6 +16,10 @@ import dao.models.Projection;
 @Stateless
 public class JpaProjectionDAO extends JpaDAO implements ProjectionDAO {
 
+	public JpaProjectionDAO() {
+		super(Projection.class);
+	}
+
 	@Override
 	public void addProjection(Projection projection) {
 		//checkTime(projection.getStartTime(), projection.getEndTime());

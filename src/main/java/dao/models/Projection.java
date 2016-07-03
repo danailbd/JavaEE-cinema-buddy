@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +17,9 @@ public class Projection implements Serializable {
     private int id;
 
     @Column(nullable = false)
-    private Date startTime;
+    private Timestamp startTime;
     @Column(nullable = false)
-    private Date endTime;
+    private Timestamp endTime;
 
 
     @ManyToOne
@@ -35,6 +36,13 @@ public class Projection implements Serializable {
 
 
     public Projection() {
+    }
+
+    public Projection(Timestamp startTime, Timestamp endTime, Theater theater, Movie movie) {
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.theater = theater;
+        this.movie = movie;
     }
 
     public int getId() {
@@ -57,19 +65,19 @@ public class Projection implements Serializable {
         this.movie = movie;
     }
 
-    public Date getStartTime() {
+    public Timestamp getStartTime() {
         return startTime;
     }
 
-    public void setStartDate(Date date) {
+    public void setStartDate(Timestamp date) {
         this.startTime = date;
     }
 
-    public Date getEndTime() {
+    public Timestamp getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(Timestamp endTime) {
         this.endTime = endTime;
     }
 
@@ -109,5 +117,18 @@ public class Projection implements Serializable {
         result = 31 * result + getTheater().hashCode();
         result = 31 * result + getMovie().hashCode();
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Projection{" +
+                "id=" + id +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", theater=" + theater +
+                ", movie=" + movie +
+                ", bookings=" + bookings +
+                ", bookingsList=" + bookingsList +
+                '}';
     }
 }
