@@ -8,6 +8,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import com.google.gson.*;
 
 import dao.BookingDAO;
 import dao.models.Booking;
@@ -45,8 +46,19 @@ public class BookingResource {
 	}
 
 	@GET
+	@Path("/projId/{projId}")
+	public Long getFreeSeatsPerBooking(@PathParam("projId") Integer projId) {
+		try {
+			Long allBookings = dao.getFreeSeats(projId);
+			return allBookings;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@GET
 	@Path("/id/{id}")
-	public Booking getById(@PathParam("bookingId") Integer bookingId) {
+	public Booking getById(@PathParam("id") Integer bookingId) {
 		try {
 			Booking booking = dao.getBookingById(bookingId);
 			return booking;
@@ -58,8 +70,11 @@ public class BookingResource {
 	@PUT
 	@Path("/add")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response addBooking(Booking booking) {
+	public Response addBooking(JSONObject inputJsonObj) {
 		try {
+			long currentSeat = booking.getSeat();
+			long bitSeat = (0 | (1L << currentSeat));
+			booking.setSeat(bitSeat);
 			dao.addBooking(booking);
 			return RESPONSE_OK;
 		} catch (Exception e) {

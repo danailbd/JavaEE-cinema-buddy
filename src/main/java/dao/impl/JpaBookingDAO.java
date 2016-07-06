@@ -19,6 +19,14 @@ public class JpaBookingDAO extends JpaDAO implements BookingDAO {
 
 	@Override
 	public void addBooking(Booking booking) {
+
+		long currentSeat = booking.getSeat();
+		Long bitSeat = (1L << currentSeat);
+		try {
+			booking.setSeat(bitSeat);
+		} catch (InvalidAttributeValueException e) {
+			e.printStackTrace();
+		}
 		persist(booking);
 	}
 
@@ -42,6 +50,14 @@ public class JpaBookingDAO extends JpaDAO implements BookingDAO {
 	}
 
 	@Override
+	public List<Booking> getBookingByProj(int projId) {
+		String txtQuery = "SELECT u FROM Booking u WHERE u.projection.id=:PROJ_ID";
+		TypedQuery<Booking> query = entityManager.createQuery(txtQuery, Booking.class);
+		query.setParameter("PROJ_ID", projId);
+		return query.getResultList();
+	}
+
+	@Override
 	public void updateBookingStatus(int bookingId, String status) {
 //		Booking bookingUpdatedStatus = getBookingById(bookingId);
 //		bookingUpdatedStatus.setStatus(status);
@@ -60,10 +76,20 @@ public class JpaBookingDAO extends JpaDAO implements BookingDAO {
 
 	@Override
 	public List<Booking> getBookingsPerUser(Integer userId) {
-		String txtQuery = "SELECT * FROM BOOKINGS WHERE u.USER_ID=:USER_ID";
+		String txtQuery = "SELECT u FROM Booking u WHERE u.user.id=:USER_ID";
 		TypedQuery<Booking> query = entityManager.createQuery(txtQuery, Booking.class);
 		query.setParameter("USER_ID", userId);
 		return query.getResultList();
+	}
+
+	@Override
+	public Long getFreeSeats(Integer projId){
+		Long freeSeats = 0L;
+		List<Booking> bookings = getBookingByProj(projId);
+		for( Booking b : bookings){
+			freeSeats |= b.getSeat();
+		}
+		return freeSeats;
 	}
 
 }

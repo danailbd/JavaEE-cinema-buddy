@@ -23,7 +23,7 @@ public class Booking {
     private User user;
 
     @Column(nullable = false)
-    private int seat;
+    private Long seat;
 
     public int getId() {
         return id;
@@ -31,7 +31,7 @@ public class Booking {
 
     public Booking() { }
 
-    public Booking(Projection projection, int seat, User user) {
+    public Booking(Projection projection, Long seat, User user) {
         this.projection = projection;
         this.seat = seat;
         this.user = user;
@@ -61,7 +61,7 @@ public class Booking {
         this.user = user;
     }
 
-    public int getSeat() {
+    public Long getSeat() {
         return seat;
     }
 
@@ -74,7 +74,7 @@ public class Booking {
         boolean taken = false;
 
         for (Booking booking : projection.getBookings()) {
-            if (booking.getSeat() == seat) {
+            if (2 ==2){//booking.getSeat() == seat) {
                 taken = true;
                 break;
             }
@@ -82,10 +82,9 @@ public class Booking {
         return taken;
     }
 
-    public void setSeat(int seat) throws InvalidAttributeValueException {
+    public void setSeat(Long seat) throws InvalidAttributeValueException {
  
-        if (seat > 0 && seat < projection.getTheater().getCapacity() &&
-                !isSeatTaken(seat)) {
+        if (seat > 0L) {
             this.seat = seat;
         }
         throw new InvalidAttributeValueException();
@@ -110,7 +109,7 @@ public class Booking {
         int result = getId();
         result = 31 * result + getProjection().hashCode();
         result = 31 * result + getUser().hashCode();
-        result = 31 * result + getSeat();
+        result = 31 * result + getSeat().intValue();
         return result;
     }
 

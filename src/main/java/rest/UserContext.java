@@ -13,8 +13,6 @@ public class UserContext implements Serializable {
 
     @Inject
     private User currentUser;
-    private UserContext() {}
-
     public User getCurrentUser() {
          return currentUser;
      }

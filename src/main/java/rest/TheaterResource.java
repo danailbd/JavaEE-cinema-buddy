@@ -38,7 +38,7 @@ public class TheaterResource {
 
 	@GET
 	@Path("/id/{id}")
-	public Theater getById(@PathParam("theaterId") Integer theaterId) {
+	public Theater getById(@PathParam("id") Integer theaterId) {
 		try {
 			Theater theater = dao.getTheaterById(theaterId);
 			return theater;

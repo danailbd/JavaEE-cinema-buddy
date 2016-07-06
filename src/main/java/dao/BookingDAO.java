@@ -17,4 +17,8 @@ public interface BookingDAO {
 	void removeBooking(int id);
 
 	List<Booking> getBookingsPerUser(Integer userId);
+
+	List<Booking> getBookingByProj(int projId);
+
+	Long getFreeSeats(Integer projId);
 }

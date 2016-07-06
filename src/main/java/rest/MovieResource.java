@@ -43,7 +43,7 @@ public class MovieResource {
 
 	@GET
 	@Path("/id/{id}")
-	public Movie getById(@PathParam("movieId") Integer movieId) {
+	public Movie getById(@PathParam("id") Integer movieId) {
 		try {
 			Movie movie = dao.getMovieById(movieId);
 			return movie;

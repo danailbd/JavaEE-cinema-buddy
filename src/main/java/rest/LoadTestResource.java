@@ -86,7 +86,7 @@ public class LoadTestResource {
         List<Projection> projections = pDao.getAllProjections();
         List<User> users = uDao.getAllUsersByRole(UserRole.simple);
 
-        Booking tmp = new Booking(projections.get(0), 1,  users.get(0));
+        Booking tmp = new Booking(projections.get(0), 1L,  users.get(0));
         res.add(tmp);
         bDao.addBooking(tmp);
     }
