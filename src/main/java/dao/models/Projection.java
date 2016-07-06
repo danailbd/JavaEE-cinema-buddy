@@ -47,6 +47,7 @@ public class Projection implements Serializable {
     }
 
     @XmlID
+    @XmlElement(name="id")
     public String getStrId() {return String.valueOf(id);}
 
     public int getId() {

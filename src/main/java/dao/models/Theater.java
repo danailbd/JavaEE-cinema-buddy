@@ -1,6 +1,7 @@
 package dao.models;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -33,6 +34,7 @@ public class Theater implements Serializable {
     }
 
     @XmlID
+    @XmlElement(name="id")
     public String getStrId() {return String.valueOf(id);}
 
     public int getId() {

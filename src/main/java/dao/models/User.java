@@ -3,6 +3,7 @@ package dao.models;
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -39,6 +40,7 @@ public class User implements Serializable {
 
 
     @XmlID
+    @XmlElement(name="id")
     public String getStrId() {return String.valueOf(id);}
 
     public int getId() {

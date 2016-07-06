@@ -48,6 +48,7 @@ public class Booking {
     }
 
     @XmlID
+    @XmlElement(name="id")
     public String getStrId() {return String.valueOf(id);}
 
     @XmlIDREF
