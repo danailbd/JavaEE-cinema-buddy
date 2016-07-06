@@ -13,7 +13,6 @@ public class Theater implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @XmlID
     private int id;
 
     @Column(nullable = false)
@@ -32,6 +31,9 @@ public class Theater implements Serializable {
         this.capacity = capacity;
         this.type = type;
     }
+
+    @XmlID
+    public String getStrId() {return String.valueOf(id);}
 
     public int getId() {
         return id;

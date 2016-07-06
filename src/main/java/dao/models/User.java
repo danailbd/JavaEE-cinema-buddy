@@ -15,7 +15,6 @@ import java.util.List;
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @XmlID
     private int id;
 
     @Enumerated(EnumType.STRING)
@@ -38,6 +37,9 @@ public class User implements Serializable {
     // TODO some restrictions ?
     private String password;
 
+
+    @XmlID
+    public String getStrId() {return String.valueOf(id);}
 
     public int getId() {
         return id;
