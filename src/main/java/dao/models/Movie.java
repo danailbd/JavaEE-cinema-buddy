@@ -15,7 +15,6 @@ import java.util.List;
 public class Movie implements Serializable {
     @Id
     @GeneratedValue
-    @XmlID
 //    @XmlJavaTypeAdapter(type=long.class, value=WSLongAdapter.class)
     private int id;
 
@@ -47,6 +46,9 @@ public class Movie implements Serializable {
         this.title = title;
         this.price = price;
     }
+
+    @XmlID
+    public String getStrId() {return String.valueOf(id);}
 
     public int getId() {
         return id;

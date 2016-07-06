@@ -2,6 +2,7 @@ package dao.models;
 
 import javax.management.InvalidAttributeValueException;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -11,17 +12,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Booking {
     @Id
     @GeneratedValue
-    @XmlID
     private int id;
 
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "projection_id")
-    @XmlIDREF
     private Projection projection;
 
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "user_id")
-    @XmlIDREF
     private User user;
 
     @Column(nullable = false)
@@ -39,6 +37,8 @@ public class Booking {
         this.user = user;
     }
 
+    @XmlIDREF
+    @XmlElement(name="projection_id")
     public Projection getProjection() {
         return projection;
     }
@@ -47,6 +47,11 @@ public class Booking {
         this.projection = projection;
     }
 
+    @XmlID
+    public String getStrId() {return String.valueOf(id);}
+
+    @XmlIDREF
+    @XmlElement(name="user_id")
     public User getUser() {
         return user;
     }
